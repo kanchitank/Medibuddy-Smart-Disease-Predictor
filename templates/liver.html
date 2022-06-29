@@ -1,0 +1,85 @@
+{% extends 'main.html' %}
+{% block content %}
+<style>
+body {
+    font-family: Cambria;
+    height: 100%;
+    background-image: linear-gradient(#4e0374, #c37ee6);
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+</style>
+<div class="row" style="margin-bottom: 180px;">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <center><h1 style="color:white;">Liver Disease Predictor</h1></center>
+        <div class="card card-body" style="border: 1px solid black; background-color: #daa8f4">
+            <form class="form-horizontal" action="{{ url_for('predictPage') }}" method="POST">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input style="border: 1px solid black; background-color: #f0d0ff" class="form-control" type="text" name="Age" placeholder="Age (in years)">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input style="border: 1px solid black; background-color: #f0d0ff" class="form-control" type="text" name="Gender" placeholder="Gender (0: Male; 1: Female)">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input style="border: 1px solid black; background-color: #f0d0ff" class="form-control" type="text" name="Total_Bilirubin" placeholder="Total Bilirubin (in mg/dL)">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input style="border: 1px solid black; background-color: #f0d0ff" class="form-control" type="text" name="Direct_Bilirubin" placeholder="Conjugated Bilirubin (in mg/dL)">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input style="border: 1px solid black; background-color: #f0d0ff" class="form-control" type="text" name="Alkaline_Phosphotase" placeholder="Alkaline Phosphatase (in IU/L)">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input style="border: 1px solid black; background-color: #f0d0ff" class="form-control" type="text" name="Alamine_Aminotransferase" placeholder="Alamine Aminotransferase (in IU/L)">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input style="border: 1px solid black; background-color: #f0d0ff" class="form-control" type="text" name="Aspartate_Aminotransferase" placeholder="Aspartate Aminotransferase (in IU/L)">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input style="border: 1px solid black; background-color: #f0d0ff" class="form-control" type="text" name="Total_Protiens" placeholder="Total Proteins (in g/dL)">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input style="border: 1px solid black; background-color: #f0d0ff" class="form-control" type="text" name="Albumin" placeholder="Albumin (in g/dL)">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input style="border: 1px solid black; background-color: #f0d0ff" class="form-control" type="text" name="Albumin_and_Globulin_Ratio" placeholder="Albumin and Globulin Ratio">
+                        </div>
+                    </div>
+                </div>
+                <input style="background-color: #4e0374" type="submit" class="btn btn-info btn-block" value="Predict">
+            </form>
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+{% endblock %}

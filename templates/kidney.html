@@ -1,0 +1,161 @@
+{% extends 'main.html' %}
+{% block content %}
+<style>
+body {
+    font-family: Cambria;
+    height: 100%;
+    background-image: linear-gradient(#4e0374, #c37ee6);
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+</style>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <center><h1 style="color:white;">Kidney Disease Predictor</h1></center>
+        <div class="card card-body" style="border: 1px solid black; background-color: #daa8f4">
+            <form class="form-horizontal" action="{{ url_for('predictPage') }}" method="POST">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input style="border: 1px solid black; background-color: #f0d0ff" class="form-control" type="text" name="age" placeholder="Age (in years)">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input style="border: 1px solid black; background-color: #f0d0ff" class="form-control" type="text" name="blood_pressure" placeholder="Blood Pressure (in mm/Hg)">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input style="border: 1px solid black; background-color: #f0d0ff" class="form-control" type="text" name="specific_gravity" placeholder="Specific Gravity">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input style="border: 1px solid black; background-color: #f0d0ff" class="form-control" type="text" name="albumin" placeholder="Albumin (0, 1, 2, 3, 4, 5)">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input style="border: 1px solid black; background-color: #f0d0ff" class="form-control" type="text" name="sugar" placeholder="Sugar (0, 1, 2, 3, 4, 5)">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input style="border: 1px solid black; background-color: #f0d0ff" class="form-control" type="text" name="red_blood_cells" placeholder="Red Blood Cells (0: Abnormal; 1: Normal)">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input style="border: 1px solid black; background-color: #f0d0ff" class="form-control" type="text" name="pus_cell" placeholder="Pus Cell (0: Abnormal; 1: Normal)">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input style="border: 1px solid black; background-color: #f0d0ff" class="form-control" type="text" name="pus_cell_clumps" placeholder="Pus Cell Clumps (0: Not Present; 1: Present)">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input style="border: 1px solid black; background-color: #f0d0ff" class="form-control" type="text" name="bacteria" placeholder="Bacteria (0: Not Present; 1: Present)">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input style="border: 1px solid black; background-color: #f0d0ff" class="form-control" type="text" name="blood_glucose_random" placeholder="Blood Glucose Random (in mgs/dl)">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input style="border: 1px solid black; background-color: #f0d0ff" class="form-control" type="text" name="blood_urea" placeholder="Blood Urea (in mgs/dl)">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input style="border: 1px solid black; background-color: #f0d0ff" class="form-control" type="text" name="serum_creatinine" placeholder="Serum Creatinine (in mgs/dl)">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input style="border: 1px solid black; background-color: #f0d0ff" class="form-control" type="text" name="sodium" placeholder="Sodium (in mEq/L)">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input style="border: 1px solid black; background-color: #f0d0ff" class="form-control" type="text" name="potassium" placeholder="Potassium (in mEq/L)">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input style="border: 1px solid black; background-color: #f0d0ff" class="form-control" type="text" name="haemoglobin" placeholder="Haemoglobin (in gms)">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input style="border: 1px solid black; background-color: #f0d0ff" class="form-control" type="text" name="packed_cell_volume" placeholder="Packed Cell Volume">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input style="border: 1px solid black; background-color: #f0d0ff" class="form-control" type="text" name="white_blood_cell_count" placeholder="White Blood Cell Count (in cells/cumm)">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input style="border: 1px solid black; background-color: #f0d0ff" class="form-control" type="text" name="red_blood_cell_count" placeholder="Red Blood Cell Count (in millions/cmm)">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input style="border: 1px solid black; background-color: #f0d0ff" class="form-control" type="text" name="hypertension" placeholder="Hypertension (0: No; 1: Yes)">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input style="border: 1px solid black; background-color: #f0d0ff" class="form-control" type="text" name="diabetes_mellitus" placeholder="Diabetes Mellitus (0: No; 1: Yes)">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input style="border: 1px solid black; background-color: #f0d0ff" class="form-control" type="text" name="coronary_artery_disease" placeholder="Coronary Artery Disease (0: No; 1: Yes)">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input style="border: 1px solid black; background-color: #f0d0ff" class="form-control" type="text" name="appetite" placeholder="Appetite (0: Good; 1: Poor)">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input style="border: 1px solid black; background-color: #f0d0ff" class="form-control" type="text" name="peda_edema" placeholder="Pedal Edema (0: No; 1: Yes)">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input style="border: 1px solid black; background-color: #f0d0ff" class="form-control" type="text" name="aanemia" placeholder="Anemia (0: No; 1: Yes)">
+                        </div>
+                    </div>
+                </div>
+                <input style="background-color: #4e0374" type="submit" class="btn btn-info btn-block" value="Predict">
+            </form>
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+{% endblock %}
