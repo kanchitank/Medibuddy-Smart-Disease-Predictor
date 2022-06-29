@@ -1,0 +1,7 @@
+*.md
+*.png
+*.jpeg
+*.ipynb
+/images
+/notebooks
+/test_images
